@@ -12,7 +12,7 @@ class MovieSearchResource(Resource):
 
     def get(self):
         query = parser.parse_args()['query']
-        keywords = query.split(",")
+        keywords = map(lambda k: k.lower(), query.split(","))
         if not keywords:
             abort(400, 'query must not be empty.')
         return {'res': self.store.query(keywords)}

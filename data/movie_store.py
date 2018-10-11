@@ -7,10 +7,13 @@ SCHEMA = Schema(title=TEXT(stored=True), keywords=KEYWORD)
 
 
 class MovieStore:
-    def __init__(self, source):
+    def __init__(self, data_source):
         self.index = RamStorage().create_index(SCHEMA)
+        self.data_source = data_source
+
+    def initialize(self):
         writer = self.index.writer()
-        for doc in source.get_docs():
+        for doc in self.data_source.get_documents():
             writer.add_document(**doc)
         writer.commit()
 
