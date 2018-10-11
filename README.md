@@ -1,4 +1,4 @@
-See flaskr/__init__.py for app init logic.
+See flaskr/_\_init__.py for app init logic.
 
 Uses:
 - `requests`: for http requests
