@@ -15,4 +15,4 @@ class MovieSearchResource(Resource):
         keywords = map(lambda k: k.lower(), query.split(","))
         if not keywords:
             abort(400, 'query must not be empty.')
-        return {'res': self.store.query(keywords)}
+        return {'res': self.store.query_for_titles(keywords)}

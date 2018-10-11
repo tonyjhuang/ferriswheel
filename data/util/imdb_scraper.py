@@ -5,6 +5,7 @@ LIST_PAGE = "https://www.imdb.com/search/title?groups=top_1000&page={}&sort=user
 
 
 class ImdbScraper:
+    """Scrapes the top 1000 movies from IMDB"""
     def __init__(self):
         self.list_pages = [LIST_PAGE.format(i) for i in range(1, 21)]
 
@@ -39,14 +40,14 @@ class FakeScraper:
     def scrape(self):
         return [
             {
-                'title': u't1',
+                'title': u'T1',
                 'year': u'2000',
                 'genres': [u'horror', u'comedy'],
                 'director': u'rick',
                 'actors': [u'morty'],
             },
             {
-                'title': u't2',
+                'title': u'T2',
                 'year': u'2012',
                 'genres': [u'drama'],
                 'director': u'beth',

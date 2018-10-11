@@ -7,6 +7,7 @@ SCHEMA = Schema(title=TEXT(stored=True), keywords=KEYWORD)
 
 
 class MovieStore:
+    """Interface for searching movies by keyword."""
     def __init__(self, data_source):
         self.index = RamStorage().create_index(SCHEMA)
         self.data_source = data_source
@@ -17,7 +18,7 @@ class MovieStore:
             writer.add_document(**doc)
         writer.commit()
 
-    def query(self, keywords):
+    def query_for_titles(self, keywords):
         with self.index.searcher() as searcher:
             query = QueryParser("keywords", self.index.schema).parse(" ".join(keywords))
             return map(lambda res: str(res['title']), searcher.search(query))

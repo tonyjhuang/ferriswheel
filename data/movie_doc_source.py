@@ -17,7 +17,7 @@ class MovieDataSource:
         keywords.append(movie['director'])
         keywords += movie['actors']
         return {
-            'title': movie['title'].lower(),
+            'title': movie['title'],
             'keywords': map(lambda keyword: keyword.lower(), keywords)
         }
 
@@ -42,6 +42,6 @@ class FakeDataSource:
     """Used for debugging"""
     def get_documents(self):
         return [
-            {'title': u'saving private ryan', 'keywords': [u'spielberg', u'hanks']},
-            {'title': u'find mr nemo', 'keywords': [u'fish', u'spielberg']},
+            {'title': u'Saving Private Ryan', 'keywords': [u'spielberg', u'hanks']},
+            {'title': u'Find Mr Nemo', 'keywords': [u'fish', u'spielberg']},
         ]
